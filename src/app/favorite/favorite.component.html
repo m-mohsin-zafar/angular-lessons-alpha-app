@@ -1,0 +1,8 @@
+<i
+  class="bi i-4x"
+  [ngClass]="{
+    'bi-star-fill': isClicked,
+    'bi-star': !isClicked
+  }"
+  (click)="onFavClicked()"
+></i>

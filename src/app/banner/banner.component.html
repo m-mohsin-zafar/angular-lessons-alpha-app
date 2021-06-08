@@ -1,0 +1,33 @@
+<div class="container-fluid p-3 mb-2" [class.bg-dark]="filler.isDark" [class.bg-primary]="!filler.isDark">
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <div class="row">
+        <div class="col-6">
+          <div class="row">
+            <div class="col-12 text-center p-2">
+              <h1 class="display-4 font-weight-bolder" [class.text-white]="filler.isDark">
+                {{filler.title}}
+              </h1>
+            </div>
+            <div class="col-12 text-center">
+              <p class="description" [class.text-white]="filler.isDark" [class.text-black-50]="!filler.isDark">
+                {{filler.description}}
+              </p>
+            </div>
+            <div class="col-12 text-center pt-3">
+              <div class="col-12 text-center py-2 ">
+                <button class="btn btn-sm w-50" [class.btn-success]="filler.isDark" [class.btn-info]="!filler.isDark">{{filler.button1Text}}</button>
+              </div>
+              <div class="col-12 text-center">
+                <button class="btn btn-sm w-50" [class.btn-light]="filler.isDark" [class.btn-danger]="!filler.isDark">{{filler.button2Text}}</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 text-center">
+          <img [src]="filler.imgUrl" class="img-fluid" alt="Responsive image">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

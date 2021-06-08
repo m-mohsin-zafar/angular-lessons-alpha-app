@@ -1,0 +1,55 @@
+<form #fex='ngForm' (ngSubmit)="submitForm(fex)">
+  <div ngModelGroup="contact" #contact>
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input
+        required
+        minlength="3"
+        maxlength="12"
+        pattern="John" ngModel #firstName="ngModel" (change)="log(firstName)" type="text" name="firstName" id="firstName" class="form-control" placeholder="Jane">
+      <div class="alert alert-danger" role="alert" *ngIf="firstName.touched && !firstName.valid">
+        <strong *ngIf="firstName.errors?.required">First Name is Required</strong>
+        <strong *ngIf="firstName.errors?.minlength">Minimum Length of First Name must be 3 Characters</strong>
+        <strong *ngIf="firstName.errors?.pattern">Pattern didn't Match</strong>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input required minlength="3" maxlength="12" pattern="Doe" ngModel #lastName="ngModel" (change)="log(lastName)" type="text" name="lastName" id="lastName" class="form-control" placeholder="Doe">
+      <div class="alert alert-danger" role="alert" *ngIf="lastName.touched && !lastName.valid">
+        <strong *ngIf="lastName.errors?.required">Last Name is Required</strong>
+        <strong *ngIf="lastName.errors?.minlength">Minimum Length of Last Name must be 3 Characters</strong>
+        <strong *ngIf="lastName.errors?.pattern">Pattern didn't Match</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="comment">Comments</label>
+    <textarea ngModel #comment class="form-control" name="comment" id="comment" rows="3"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="area">Area</label>
+    <select ngModel #area class="form-control" name="area" id="area">
+      <option *ngFor="let area of areas" [value]="area.id" >{{ area.city }}</option>
+    </select>
+  </div>
+
+  <div class="form-check" *ngFor="let area of areas">
+    <label class="form-check-label">
+      <input type="radio" ngModel #areaB class="form-check-input" name="areaB" id="areaB" [value]="area.id">
+      {{ area.city }}
+    </label>
+  </div>
+
+  <div class="form-check">
+    <label class="form-check-label">
+      <input ngModel #acknowledged type="checkbox" class="form-check-input" name="acknowledged" id="acknowledged">
+      Do you acknowledge .... ?
+    </label>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!fex.valid" >Submit</button>
+  <p>{{ fex.value | json }}</p>
+  <div class="spinner-border"></div>
+</form>

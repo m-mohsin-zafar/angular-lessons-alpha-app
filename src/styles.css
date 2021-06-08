@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300&display=swap');
+
+
+body {
+  padding: 10px;
+}
+.i-2x {
+  font-size: 2em;
+}
+.i-3x {
+  font-size: 3em;
+}
+.i-4x {
+  font-size: 4em;
+}

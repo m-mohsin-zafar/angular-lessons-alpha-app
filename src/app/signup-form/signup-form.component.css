@@ -1,0 +1,12 @@
+.container {
+  background-color: bisque !important;
+  border-radius: 10px;
+}
+
+h3 {
+  font-family: 'Montserrat', sans-serif;;
+}
+
+.err {
+  border: 3px solid darkred;
+}
