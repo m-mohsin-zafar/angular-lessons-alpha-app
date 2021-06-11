@@ -3,6 +3,8 @@ import {IPost} from "../ipost";
 import {PostService} from "../post.service";
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import {FormControl, FormGroup} from "@angular/forms";
+import {AppError} from "../commons/app-error";
+import {NotFoundError} from "../commons/not-found-error";
 
 @Component({
   selector: 'app-posts',
@@ -36,7 +38,7 @@ export class PostsComponent implements OnInit {
 
   createNewPost(postForm: any) {
     console.log(postForm.value);
-    let newPostUserId = Math.floor(Math.random() * 1000) + 1;
+    let newPostUserId = Math.floor(Math.random() * 1000) + 100;
     let newPost: IPost = {
       userId: newPostUserId,
       title: postForm.value.title,
@@ -56,7 +58,8 @@ export class PostsComponent implements OnInit {
 
   deletePost(post: IPost){
     console.log(post);
-    this._postService.deletePost((post.id as number)).subscribe(
+    this._postService.deletePost((post.id as number))
+      .subscribe(
       (response) => {
         console.log(response);
         let index: number = this.posts?.indexOf(post) as number;
@@ -71,6 +74,15 @@ export class PostsComponent implements OnInit {
         console.log(response);
         if (this.posts) {
           this.posts[atIndex] = post;
+        }
+      }, (error: AppError) => {
+        if (error instanceof NotFoundError){
+          console.error(error);
+          // replace logger services
+        }
+        else {
+          console.error(error);
+          console.error('Something Unexpected');
         }
       }
     )
@@ -114,4 +126,5 @@ export class PostsComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
+
 }
