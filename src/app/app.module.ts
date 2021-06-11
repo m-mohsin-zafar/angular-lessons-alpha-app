@@ -12,6 +12,9 @@ import {SignupFormComponent} from './signup-form/signup-form.component';
 import {HttpClientModule} from "@angular/common/http";
 import { PostsComponent } from './posts/posts.component';
 import { ProductsComponent } from './products/products.component';
+import * as bootstrap from "bootstrap";
+import * as jQuery from 'jquery';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,7 @@ import { ProductsComponent } from './products/products.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

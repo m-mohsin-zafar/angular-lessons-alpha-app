@@ -1,5 +1,61 @@
 <div class="container">
+  <form #postForm="ngForm" class="mb-3" (ngSubmit)="createNewPost(postForm)">
+    <div class="form-group">
+      <label for="title">Post Title</label>
+      <input ngModel type="text" class="form-control form-control-sm" name="title" id="title"
+             placeholder="Enter Post Title">
+    </div>
+    <div class="form-group">
+      <label for="body">Text</label>
+      <input ngModel type="text" class="form-control form-control-sm" name="body" id="body"
+             placeholder="Enter Post Text">
+    </div>
+    <button type="submit" class="btn btn-outline-primary btn-sm">Create New Post</button>
+  </form>
+
   <ul class="list-group">
-    <li class="list-group-item" *ngFor="let post of posts">{{post.title}}</li>
+    <li
+      class="list-group-item list-group-item-primary mb-2"
+      *ngFor="let post of posts">
+      {{post.title}}
+      <hr>
+      <small class="text-muted">
+        {{post.body}}
+      </small>
+      <hr>
+      <button
+        (click)="deletePost(post)"
+        class="btn btn-outline-danger btn-sm">
+        Delete
+      </button>
+      <button
+        class="btn btn-sm btn-outline-secondary"
+        (click)="open(content, post)">Update</button>
+    </li>
   </ul>
 </div>
+
+<!--Modal Template-->
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Edit Post</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="editForm">
+      <div class="form-group">
+        <label for="newtitle">Title</label>
+        <input formControlName="title" type="text" class="form-control" name="title" id="newtitle" [placeholder]="postUpdateClicked?titlePlaceHolder:''">
+      </div>
+      <div class="form-group">
+        <label for="newbody">Body</label>
+        <input formControlName="body" type="text" class="form-control" name="body" id="newbody" [placeholder]="postUpdateClicked?bodyPlaceHolder:''">
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-sm btn-outline-dark" (click)="modal.close(editForm)">Update Post</button>
+  </div>
+</ng-template>
