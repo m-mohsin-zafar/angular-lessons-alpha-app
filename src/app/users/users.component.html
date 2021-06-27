@@ -1,0 +1,36 @@
+<div class="container">
+  <ul class="list-group">
+    <li
+      class="list-group-item list-group-item-primary mb-2"
+      *ngFor="let user of users">
+      <div class="row">
+        <div class="col-2">
+          <img
+            [src]="user.gender == 'Male'? malePlaceholder : femalePlaceholder"
+            class="img-thumbnail"
+            alt="placeholder"
+            height="80"
+            width="80"
+          >
+        </div>
+        <div class="col-10 p-2">
+          <div class="row">
+            <div class="col-12">
+              <a [routerLink]="['/users', user.id]">
+                {{user.name | titlecase}}
+              </a>
+            </div>
+            <div class="col-12 text-muted">
+              {{user.gender}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <ngb-pagination
+    class="d-flex justify-content-center"
+    [collectionSize]="70"
+    [(page)]="page"
+    (pageChange)="pageNavigator(page)"></ngb-pagination>
+</div>

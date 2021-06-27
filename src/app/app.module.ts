@@ -15,6 +15,14 @@ import { ProductsComponent } from './products/products.component';
 import * as bootstrap from "bootstrap";
 import * as jQuery from 'jquery';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UsersComponent } from './users/users.component';
+import { UserPostsComponent } from './user-posts/user-posts.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { LandingComponent } from './landing/landing.component';
+import {AppRoutingModule} from "./app-routing/app-routing.module";
+import { IndividualPostComponent } from './individual-post/individual-post.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +34,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ExampleFormComponent,
     SignupFormComponent,
     PostsComponent,
-    ProductsComponent
+    ProductsComponent,
+    UsersComponent,
+    UserPostsComponent,
+    NavigationComponent,
+    NotfoundComponent,
+    LandingComponent,
+    IndividualPostComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +48,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

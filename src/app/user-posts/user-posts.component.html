@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row bg-light d-flex align-items-center">
+    <div class="col-4">
+      <img
+        [src]="user.gender == 'Male'? malePlaceholder : femalePlaceholder"
+        class="img-thumbnail"
+        alt="placeholder"
+        height="200"
+        width="200"
+      >
+    </div>
+    <div class="col-8">
+      <div class="row">
+        <div class="col-12">
+          <strong>
+            {{user.name | titlecase}}
+          </strong>
+        </div>
+        <div class="col-12">
+          {{user.gender}}
+        </div>
+        <div class="col-12 text-muted">
+          {{user.email}}
+        </div>
+      </div>
+      <button type="button" class="btn btn-outline-primary btn-sm" (click)="seePosts()">See Posts</button>
+    </div>
+  </div>
+</div>
+
+<!--For Child-->
+<router-outlet></router-outlet>
